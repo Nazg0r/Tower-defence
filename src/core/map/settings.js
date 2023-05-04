@@ -1,0 +1,9 @@
+export const SETTINGS = {
+  MAP_WIDTH: 1280,
+  MAP_HEIGHT: 768,
+  TAIL_SIZE: 64,
+  START_X: 0,
+  START_Y: 0,
+  COLUMNS: 20,
+  ROWS: 12
+};
