@@ -8,9 +8,15 @@ class Zone {
   }
 }
 
+class PathZone extends Zone {
+  constructor(type, x, y, direction = null) {
+    super(type, x, y);
+    this.direction = direction;
+  }
+}
 function createPathZone(x, y) {
   const type = 'pathZone';
-  return new Zone(type, x, y);
+  return new PathZone(type, x, y);
 }
 
 function pathGeneration() {
@@ -134,4 +140,46 @@ function isPathGenerated() {
   }
 }
 
-export const path = isPathGenerated();
+const path = isPathGenerated();
+
+function definePathDirection(path) {
+  const currentPath = path;
+  const length = currentPath.length;
+
+  currentPath[0].direction = 'right';
+  currentPath[length - 1].direction = 'right';
+
+  for (let i = 1; i < length - 1; i++) {
+    const x1 = currentPath[i - 1].x;
+    const y1 = currentPath[i - 1].y;
+    const x2 = currentPath[i + 1].x;
+    const y2 = currentPath[i + 1].y;
+
+    setRightOrLeftDirection(x1, y1, x2, y2, i, currentPath);
+    setDownOrUpDirection(x1, y1, x2, y2, i, currentPath);
+    setTurnDirection(x1, y1, x2, y2, i, currentPath);
+  }
+  return currentPath;
+}
+
+function setRightOrLeftDirection(x1, y1, x2, y2, order, path) {
+  if (y1 === y2 && x1 < x2) path[order].direction = 'right';
+  if (y1 === y2 && x1 > x2) path[order].direction = 'left';
+}
+
+function setDownOrUpDirection(x1, y1, x2, y2, order, path) {
+  if (x1 === x2 && y1 < y2) path[order].direction = 'down';
+  if (x1 === x2 && y1 > y2) path[order].direction = 'up';
+}
+
+function setTurnDirection(x1, y1, x2, y2, order, path) {
+  if (y1 < y2 && x1 < x2 && x1 === path[order].x) path[order].direction = 'down-right';
+  if (y1 < y2 && x1 < x2 && x1 !== path[order].x) path[order].direction = 'right-down';
+  if (y1 < y2 && x1 > x2 && x1 === path[order].x) path[order].direction = 'down-left';
+  if (y1 < y2 && x1 > x2 && x1 !== path[order].x) path[order].direction = 'left-down';
+  if (y1 > y2 && x1 < x2 && x1 === path[order].x) path[order].direction = 'up-right';
+  if (y1 > y2 && x1 < x2 && x1 !== path[order].x) path[order].direction = 'right-up';
+  if (y1 > y2 && x1 > x2 && x1 === path[order].x) path[order].direction = 'up-left';
+  if (y1 > y2 && x1 > x2 && x1 !== path[order].x) path[order].direction = 'left-up';
+}
+export const directedPath = definePathDirection(path);
