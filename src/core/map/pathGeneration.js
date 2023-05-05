@@ -140,7 +140,7 @@ function isPathGenerated() {
   }
 }
 
-const path = isPathGenerated();
+const pathField = isPathGenerated();
 
 function definePathDirection(path) {
   const currentPath = path;
@@ -155,31 +155,31 @@ function definePathDirection(path) {
     const x2 = currentPath[i + 1].x;
     const y2 = currentPath[i + 1].y;
 
-    setRightOrLeftDirection(x1, y1, x2, y2, i, currentPath);
-    setDownOrUpDirection(x1, y1, x2, y2, i, currentPath);
-    setTurnDirection(x1, y1, x2, y2, i, currentPath);
+    setRightOrLeftDirection(x1, y1, x2, y2, currentPath[i]);
+    setDownOrUpDirection(x1, y1, x2, y2, currentPath[i]);
+    setTurnDirection(x1, y1, x2, y2, currentPath[i]);
   }
   return currentPath;
 }
 
-function setRightOrLeftDirection(x1, y1, x2, y2, order, path) {
-  if (y1 === y2 && x1 < x2) path[order].direction = 'right';
-  if (y1 === y2 && x1 > x2) path[order].direction = 'left';
+function setRightOrLeftDirection(x1, y1, x2, y2, pathField) {
+  if (y1 === y2 && x1 < x2) pathField.direction = 'right';
+  if (y1 === y2 && x1 > x2) pathField.direction = 'left';
 }
 
-function setDownOrUpDirection(x1, y1, x2, y2, order, path) {
-  if (x1 === x2 && y1 < y2) path[order].direction = 'down';
-  if (x1 === x2 && y1 > y2) path[order].direction = 'up';
+function setDownOrUpDirection(x1, y1, x2, y2, pathField) {
+  if (x1 === x2 && y1 < y2) pathField.direction = 'down';
+  if (x1 === x2 && y1 > y2) pathField.direction = 'up';
 }
 
-function setTurnDirection(x1, y1, x2, y2, order, path) {
-  if (y1 < y2 && x1 < x2 && x1 === path[order].x) path[order].direction = 'down-right';
-  if (y1 < y2 && x1 < x2 && x1 !== path[order].x) path[order].direction = 'right-down';
-  if (y1 < y2 && x1 > x2 && x1 === path[order].x) path[order].direction = 'down-left';
-  if (y1 < y2 && x1 > x2 && x1 !== path[order].x) path[order].direction = 'left-down';
-  if (y1 > y2 && x1 < x2 && x1 === path[order].x) path[order].direction = 'up-right';
-  if (y1 > y2 && x1 < x2 && x1 !== path[order].x) path[order].direction = 'right-up';
-  if (y1 > y2 && x1 > x2 && x1 === path[order].x) path[order].direction = 'up-left';
-  if (y1 > y2 && x1 > x2 && x1 !== path[order].x) path[order].direction = 'left-up';
+function setTurnDirection(x1, y1, x2, y2, pathField) {
+  if (y1 < y2 && x1 < x2 && x1 === pathField.x) pathField.direction = 'down-right';
+  if (y1 < y2 && x1 < x2 && x1 !== pathField.x) pathField.direction = 'right-down';
+  if (y1 < y2 && x1 > x2 && x1 === pathField.x) pathField.direction = 'down-left';
+  if (y1 < y2 && x1 > x2 && x1 !== pathField.x) pathField.direction = 'left-down';
+  if (y1 > y2 && x1 < x2 && x1 === pathField.x) pathField.direction = 'up-right';
+  if (y1 > y2 && x1 < x2 && x1 !== pathField.x) pathField.direction = 'right-up';
+  if (y1 > y2 && x1 > x2 && x1 === pathField.x) pathField.direction = 'up-left';
+  if (y1 > y2 && x1 > x2 && x1 !== pathField.x) pathField.direction = 'left-up';
 }
-export const directedPath = definePathDirection(path);
+export const directedPath = definePathDirection(pathField);
