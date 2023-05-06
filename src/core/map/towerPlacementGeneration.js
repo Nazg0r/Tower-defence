@@ -25,29 +25,29 @@ function towerPlacementGeneration(path) {
       addTowerZoneOverPath(towerPlacement, pathField, d);
       addTowerZoneUnderPath(towerPlacement, pathField, d);
     }
-    if (direction === 'down' || direction === 'up') {
+    if (direction === 'down' || direction === 'top') {
       addTowerZoneLeftOfPath(towerPlacement, pathField, d);
       addTowerZoneRightOfPath(towerPlacement, pathField, d);
     }
-    if (direction === 'right-down' || direction === 'up-left') {
+    if (direction === 'right-down' || direction === 'top-left') {
       addTowerZoneOverPath(towerPlacement, pathField, d);
       addTowerZoneRightOfPath(towerPlacement, pathField, d);
       addTowerZoneOverPath(towerPlacement, pathField, d, d);
       addTowerZoneOverPath(towerPlacement, pathField, d, 2 * d);
     }
-    if (direction === 'right-up' || direction === 'down-left') {
+    if (direction === 'right-top' || direction === 'down-left') {
       addTowerZoneUnderPath(towerPlacement, pathField, d);
       addTowerZoneRightOfPath(towerPlacement, pathField, d);
       addTowerZoneUnderPath(towerPlacement, pathField, d, d);
       addTowerZoneUnderPath(towerPlacement, pathField, d, 2 * d);
     }
-    if (direction === 'up-right' || direction === 'left-down') {
+    if (direction === 'top-right' || direction === 'left-down') {
       addTowerZoneOverPath(towerPlacement, pathField, d);
       addTowerZoneLeftOfPath(towerPlacement, pathField, d);
       addTowerZoneOverPath(towerPlacement, pathField, d, -d);
       addTowerZoneOverPath(towerPlacement, pathField, d, -2 * d);
     }
-    if (direction === 'left-up' || direction === 'down-right') {
+    if (direction === 'left-top' || direction === 'down-right') {
       addTowerZoneUnderPath(towerPlacement, pathField, d);
       addTowerZoneLeftOfPath(towerPlacement, pathField, d);
       addTowerZoneUnderPath(towerPlacement, pathField, d, -d);

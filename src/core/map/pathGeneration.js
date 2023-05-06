@@ -1,4 +1,4 @@
-import { SETTINGS } from './settings';
+import { SETTINGS } from './settings.js';
 
 class Zone {
   constructor(type, x, y) {
@@ -169,7 +169,7 @@ function setRightOrLeftDirection(x1, y1, x2, y2, pathField) {
 
 function setDownOrUpDirection(x1, y1, x2, y2, pathField) {
   if (x1 === x2 && y1 < y2) pathField.direction = 'down';
-  if (x1 === x2 && y1 > y2) pathField.direction = 'up';
+  if (x1 === x2 && y1 > y2) pathField.direction = 'top';
 }
 
 function setTurnDirection(x1, y1, x2, y2, pathField) {
@@ -177,9 +177,9 @@ function setTurnDirection(x1, y1, x2, y2, pathField) {
   if (y1 < y2 && x1 < x2 && x1 !== pathField.x) pathField.direction = 'right-down';
   if (y1 < y2 && x1 > x2 && x1 === pathField.x) pathField.direction = 'down-left';
   if (y1 < y2 && x1 > x2 && x1 !== pathField.x) pathField.direction = 'left-down';
-  if (y1 > y2 && x1 < x2 && x1 === pathField.x) pathField.direction = 'up-right';
-  if (y1 > y2 && x1 < x2 && x1 !== pathField.x) pathField.direction = 'right-up';
-  if (y1 > y2 && x1 > x2 && x1 === pathField.x) pathField.direction = 'up-left';
-  if (y1 > y2 && x1 > x2 && x1 !== pathField.x) pathField.direction = 'left-up';
+  if (y1 > y2 && x1 < x2 && x1 === pathField.x) pathField.direction = 'top-right';
+  if (y1 > y2 && x1 < x2 && x1 !== pathField.x) pathField.direction = 'right-top';
+  if (y1 > y2 && x1 > x2 && x1 === pathField.x) pathField.direction = 'top-left';
+  if (y1 > y2 && x1 > x2 && x1 !== pathField.x) pathField.direction = 'left-top';
 }
 export const directedPath = definePathDirection(pathField);
