@@ -1,23 +1,6 @@
 import { SETTINGS } from './settings.js';
+import PathTile from './Tiles/pathTile.js';
 
-class Zone {
-  constructor(type, x, y) {
-    this.type = type;
-    this.x = x;
-    this.y = y;
-  }
-}
-
-class PathZone extends Zone {
-  constructor(type, x, y, direction = null) {
-    super(type, x, y);
-    this.direction = direction;
-  }
-}
-function createPathZone(x, y) {
-  const type = 'pathZone';
-  return new PathZone(type, x, y);
-}
 
 function pathGeneration() {
   const path = [];
@@ -35,7 +18,7 @@ function pathGeneration() {
 function getRandomStart() {
   const x = SETTINGS.START_X;
   const y = (Math.floor(Math.random() * (SETTINGS.ROWS - 1)) + 1) * SETTINGS.TAIL_SIZE;
-  return createPathZone(x, y);
+  return new PathTile(x, y);
 }
 function isPathEndReached(currentField) {
   return currentField.x === SETTINGS.MAP_WIDTH - SETTINGS.TAIL_SIZE;
@@ -73,22 +56,22 @@ function findPossiblePath(field, path) {
 
   if (thisF.x !== xMin) {
     if (prevF.x !== (thisF.x - d) && (prevF.y === thisF.y || prevF.y !== thisF.y)) {
-      possiblePath.push(createPathZone(thisF.x - d, thisF.y));
+      possiblePath.push(new PathTile(thisF.x - d, thisF.y));
     }
   }
   if (thisF.x !== xMax) {
     if (prevF.x !== (thisF.x + d) && (prevF.y === thisF.y || prevF.y !== thisF.y)) {
-      possiblePath.push(createPathZone(thisF.x + d, thisF.y));
+      possiblePath.push(new PathTile(thisF.x + d, thisF.y));
     }
   }
   if (thisF.y !== yMin) {
     if ((prevF.x === thisF.x || prevF.x !== thisF.x) && prevF.y !== (thisF.y - d)) {
-      possiblePath.push(createPathZone(thisF.x, thisF.y - d));
+      possiblePath.push(new PathTile(thisF.x, thisF.y - d));
     }
   }
   if (thisF.y !== yMax) {
     if ((prevF.x === thisF.x || prevF.x !== thisF.x) && prevF.y !== (thisF.y + d)) {
-      possiblePath.push(createPathZone(thisF.x, thisF.y + d));
+      possiblePath.push(new PathTile(thisF.x, thisF.y + d));
     }
   }
   return possiblePath;

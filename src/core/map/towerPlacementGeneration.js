@@ -1,17 +1,7 @@
 import { directedPath as path } from './pathGeneration.js';
 import { SETTINGS } from './settings.js';
-class Zone {
-  constructor(type, x, y) {
-    this.type = type;
-    this.x = x;
-    this.y = y;
-  }
-}
+import TowerTile from './Tiles/towerTile.js';
 
-function createTowerZone(x, y) {
-  const type = 'towerZone';
-  return new Zone(type, x, y);
-}
 
 function towerPlacementGeneration(path) {
   const currentPath = path;
@@ -60,37 +50,37 @@ function towerPlacementGeneration(path) {
 
 function addTowerZoneOverPath(towerPlacement, pathField, delta,  offset = null) {
   if (!isTowerZoneExist(pathField.x + offset, pathField.y - delta, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x + offset, pathField.y - delta));
+    towerPlacement.push(new TowerTile(pathField.x + offset, pathField.y - delta));
   }
   if (!isTowerZoneExist(pathField.x + offset, pathField.y - 2 * delta, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x + offset, pathField.y - 2 * delta));
+    towerPlacement.push(new TowerTile(pathField.x + offset, pathField.y - 2 * delta));
   }
 }
 
 function addTowerZoneUnderPath(towerPlacement, pathField, delta, offset = null) {
   if (!isTowerZoneExist(pathField.x + offset, pathField.y + delta, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x + offset, pathField.y + delta));
+    towerPlacement.push(new TowerTile(pathField.x + offset, pathField.y + delta));
   }
   if (!isTowerZoneExist(pathField.x + offset, pathField.y + 2 * delta, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x + offset, pathField.y + 2 * delta));
+    towerPlacement.push(new TowerTile(pathField.x + offset, pathField.y + 2 * delta));
   }
 }
 
 function addTowerZoneLeftOfPath(towerPlacement, pathField, delta) {
   if (!isTowerZoneExist(pathField.x - delta, pathField.y, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x - delta, pathField.y));
+    towerPlacement.push(new TowerTile(pathField.x - delta, pathField.y));
   }
   if (!isTowerZoneExist(pathField.x - 2 * delta, pathField.y, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x - 2 * delta, pathField.y));
+    towerPlacement.push(new TowerTile(pathField.x - 2 * delta, pathField.y));
   }
 }
 
 function addTowerZoneRightOfPath(towerPlacement, pathField, delta) {
   if (!isTowerZoneExist(pathField.x + delta, pathField.y, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x + delta, pathField.y));
+    towerPlacement.push(new TowerTile(pathField.x + delta, pathField.y));
   }
   if (!isTowerZoneExist(pathField.x + 2 * delta, pathField.y, towerPlacement)) {
-    towerPlacement.push(createTowerZone(pathField.x + 2 * delta, pathField.y));
+    towerPlacement.push(new TowerTile(pathField.x + 2 * delta, pathField.y));
   }
 }
 
@@ -123,5 +113,4 @@ function removeOverlay(towerPlacement, path) {
 
 let towerPlacement = towerPlacementGeneration(path);
 towerPlacement = removeExtraZone(towerPlacement, path);
-
 export { towerPlacement };
