@@ -1,6 +1,6 @@
 import Enemy from './classEnemy';
 import { directedPath as path } from '../map/pathGeneration';
-import ENEMIES_SETS from './enemysSets';
+import ENEMIES_SETS from './enemySets';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -23,7 +23,7 @@ function spawnEnemies(amount, offset) {
       3.2,
       ctx,
       copyArray(waypoints),
-      ENEMIES_SETS[1]
+      ENEMIES_SETS[0]
     );
     enemies.push(enemy);
   }

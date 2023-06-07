@@ -1,5 +1,8 @@
 import { directedPath as path } from './pathGeneration.js';
 import { SETTINGS } from './settings.js';
+import { passiveZone } from './passiveZoneGeneration';
+import { towerPlacement } from './towerPlacementGeneration';
+import { activeTile } from '../events/placementMode';
 import img from './png/Test.png';
 
 
@@ -51,7 +54,7 @@ function drawPassiveZone(passiveZone) {
 
 function drawTowerPlacement(towerPlacement) {
   for (const towerField of towerPlacement) {
-    drawField(towerField, 16, 16);
+    drawField(towerField, 16, 128);
   }
 }
 
@@ -101,5 +104,33 @@ export function drawMap(passiveZone, path, towerPlacement) {
     drawDecorations(passiveZone);
     map.src = canvas.toDataURL();
   };
+}
+
+function drawGrid() {
+  for (const field of passiveZone) {
+    ctx.fillStyle = 'black';
+    ctx.strokeRect(field.x, field.y, SETTINGS.TAIL_SIZE, SETTINGS.TAIL_SIZE);
+  }
+  for (const field of towerPlacement) {
+    ctx.fillStyle = 'black';
+    ctx.strokeRect(field.x, field.y, SETTINGS.TAIL_SIZE, SETTINGS.TAIL_SIZE);
+  }
+}
+function markTowerPlacement() {
+  for (const field of towerPlacement) {
+    ctx.fillStyle = 'rgba(31,255,219,0.2)';
+    ctx.fillRect(field.x, field.y, SETTINGS.TAIL_SIZE, SETTINGS.TAIL_SIZE);
+  }
+}
+export function ShowPlacementMode() {
+  drawGrid();
+  markTowerPlacement();
+}
+
+export function highlightCells() {
+  if (activeTile) {
+    ctx.fillStyle = 'rgba(31,255,219,0.2)';
+    ctx.fillRect(activeTile.x, activeTile.y, SETTINGS.TAIL_SIZE, SETTINGS.TAIL_SIZE);
+  }
 }
 
