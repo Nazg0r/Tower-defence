@@ -8,7 +8,7 @@ const enemies = [];
 const waypoints = getWaypoints(path);
 
 spawnEnemies(10, 100);
-export function drawEnemy() {
+export function drawEnemies() {
   const enemiesNumber = enemies.length;
   for (let i = enemiesNumber - 1; i >= 0; i--) {
     enemies[i].update();

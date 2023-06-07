@@ -1,21 +1,34 @@
-import { SETTINGS } from '../map/settings';
-
 export default class Tower {
-  constructor(x, y, ctx, imageSrc) {
+  constructor(x, y, ctx, towerSet) {
     this.x = x;
     this.y = y;
     this.ctx = ctx;
     this.image = new Image();
-    this.image.src = imageSrc;
-
+    this.image.src = towerSet.imageSrc;
+    this.towerSet = {
+      spriteY: towerSet.spriteY,
+      spriteWidth: towerSet.spriteWidth,
+      spriteHeight: towerSet.spriteHeight
+    };
   }
 
   draw() {
-    this.ctx.fillStyle = 'rgba(31,255,219,0.2)';
-    this.ctx.fillRect(this.x, this.y, SETTINGS.TAIL_SIZE, SETTINGS.TAIL_SIZE);
+    const correctY = this.y - 64;
+
+    this.ctx.drawImage(
+      this.image,
+      0,
+      this.towerSet.spriteY,
+      this.towerSet.spriteWidth,
+      this.towerSet.spriteHeight,
+      this.x,
+      correctY,
+      this.towerSet.spriteWidth,
+      this.towerSet.spriteHeight
+    );
   }
 
   update() {
-    
+    this.draw();
   }
 }

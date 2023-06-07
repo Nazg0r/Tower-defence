@@ -3,8 +3,9 @@ import { SETTINGS } from './map/settings.js';
 import { towerPlacement } from './map/towerPlacementGeneration.js';
 import { passiveZone } from './map/passiveZoneGeneration.js';
 import { drawMap, map, ShowPlacementMode, highlightCells } from './map/mapDrawing';
-import { drawEnemy } from './enemys/drawEnemy';
+import { drawEnemies } from './enemys/drawEnemies';
 import { placementMode } from './events/towerSelectButton';
+import { drawTowers } from './towers/drawTower';
 import { activeTile } from './events/placementMode';
 import Enemy from './enemys/classEnemy';
 
@@ -20,11 +21,13 @@ function render() {
   const animationId = requestAnimationFrame(render);
 
   ctx.drawImage(map, 0, 0);
-  drawEnemy();
+  drawEnemies();
   if (placementMode) {
     ShowPlacementMode();
     highlightCells();
   }
+
+  drawTowers();
 
   if (stop) cancelAnimationFrame(animationId);
 }
