@@ -1,5 +1,6 @@
 import Enemy from './classEnemy';
 import { directedPath as path } from '../map/pathGeneration';
+import ENEMIES_SETS from './enemysSets';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -16,9 +17,18 @@ export function drawEnemy() {
 
 function spawnEnemies(amount, offset) {
   for (let i = 1; i <= amount; i++) {
-    enemies.push(new Enemy(-offset * i, 0, 20, 20, 3.2, ctx, copyArray(waypoints)));
+    const enemy = new Enemy(
+      -offset * i,
+      0,
+      3.2,
+      ctx,
+      copyArray(waypoints),
+      ENEMIES_SETS[1]
+    );
+    enemies.push(enemy);
   }
 }
+
 
 function getWaypoints(path) {
   const wayPoints = [];

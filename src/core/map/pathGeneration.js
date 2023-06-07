@@ -77,9 +77,9 @@ function findPossiblePath(field, path) {
   return possiblePath;
 }
 
-function findNeighbor(poss, path) {
+function findNeighbor(possible, path) {
   const existFields = path;
-  const thisField = poss;
+  const thisField = possible;
   let neighbors = 0;
   const d = SETTINGS.TAIL_SIZE;
   const xMin = SETTINGS.START_X;
