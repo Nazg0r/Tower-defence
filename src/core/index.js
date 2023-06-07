@@ -5,14 +5,14 @@ import { passiveZone } from './map/passiveZoneGeneration.js';
 import { drawMap, map, ShowPlacementMode, highlightCells } from './map/mapDrawing';
 import { drawEnemies } from './enemys/drawEnemies';
 import { placementMode } from './events/towerSelectButton';
-import { drawTowers } from './towers/drawTower';
+import { drawTowers, drawTowersRange } from './towers/drawTower';
 import { activeTile } from './events/placementMode';
 import Enemy from './enemys/classEnemy';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 let stop = false;
-setTimeout(() => stop = true,   25000);
+setTimeout(() => stop = true,   30000);
 
 drawMap(passiveZone, path, towerPlacement);
 ctx.drawImage(map, 0, 0);
@@ -21,12 +21,13 @@ function render() {
   const animationId = requestAnimationFrame(render);
 
   ctx.drawImage(map, 0, 0);
-  drawEnemies();
   if (placementMode) {
     ShowPlacementMode();
     highlightCells();
+    drawTowersRange();
   }
 
+  drawEnemies();
   drawTowers();
 
   if (stop) cancelAnimationFrame(animationId);
