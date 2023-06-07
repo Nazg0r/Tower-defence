@@ -6,370 +6,437 @@
     <title>Tower defence</title>
 </head>
 <body>
-<div id="gameAreaWrapper" class="game-wrapper">
-    <canvas id="gameCanvas" width="1280" height="768"></canvas>
-    <div id="actionBar" class="game-menu">
-        <div class="game-menu-tower-features tower-features">
-            <div class="tower-features-popup" id="tower-1">
-                <div class="tower-features-popup__col">
-                    <div class="tower-features-popup__cell">
-                        <div class="tower-features-popup__avatar">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tower-features-popup__col">
-                    <ul class="tower-features-popup__param-list">
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Назва башти</b>
-                                <h2 class="tower-features-popup__name">
-                                    Крута башня
-                                </h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Тип башти</b>
-                                <span class="tower-features-popup__type">
-										Тип 1
-									</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tower-features-popup__row">
-                    <div class="tower-features-popup__cell _center">
-                        <b>Ціна</b>
-                        <strong class="tower-features-popup__price">
-                            <span>2 грн 50 копійок</span>
-                        </strong>
-                    </div>
-                </div>
-                <div class="tower-features-popup__footer">
-                    <ul class="tower-features-popup__param-row">
-                        <li>
-                            <h3 style="color: red;">Сила</h3>
-                            <b>10</b>
-                        </li>
-                        <li>
-                            <h3 style="color: blue;">Швидкість</h3>
-                            <b>10</b>
-                        </li>
-                        <li>
-                            <h3 style="color: green;">Дальність</h3>
-                            <b>10</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tower-features-popup" id="tower-2">
-                <div class="tower-features-popup__col">
-                    <div class="tower-features-popup__cell">
-                        <div class="tower-features-popup__avatar">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tower-features-popup__col">
-                    <ul class="tower-features-popup__param-list">
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Назва башти</b>
-                                <h2 class="tower-features-popup__name">
-                                    Крута башня 2
-                                </h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Тип башти</b>
-                                <span class="tower-features-popup__type">
-										Тип 1
-									</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tower-features-popup__row">
-                    <div class="tower-features-popup__cell _center">
-                        <b>Ціна</b>
-                        <strong class="tower-features-popup__price">
-                            <span>3 грн</span>
-                        </strong>
-                    </div>
-                </div>
-                <div class="tower-features-popup__footer">
-                    <ul class="tower-features-popup__param-row">
-                        <li>
-                            <h3 style="color: red;">Сила</h3>
-                            <b>12</b>
-                        </li>
-                        <li>
-                            <h3 style="color: blue;">Швидкість</h3>
-                            <b>12</b>
-                        </li>
-                        <li>
-                            <h3 style="color: green;">Дальність</h3>
-                            <b>11</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tower-features-popup" id="tower-3">
-                <div class="tower-features-popup__col">
-                    <div class="tower-features-popup__cell">
-                        <div class="tower-features-popup__avatar">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tower-features-popup__col">
-                    <ul class="tower-features-popup__param-list">
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Назва башти</b>
-                                <h2 class="tower-features-popup__name">
-                                    Крута башня 3
-                                </h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Тип башти</b>
-                                <span class="tower-features-popup__type">
-										Тип 1
-									</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tower-features-popup__row">
-                    <div class="tower-features-popup__cell _center">
-                        <b>Ціна</b>
-                        <strong class="tower-features-popup__price">
-                            <span>3 грн 50 копійок</span>
-                        </strong>
-                    </div>
-                </div>
-                <div class="tower-features-popup__footer">
-                    <ul class="tower-features-popup__param-row">
-                        <li>
-                            <h3 style="color: red;">Сила</h3>
-                            <b>13</b>
-                        </li>
-                        <li>
-                            <h3 style="color: blue;">Швидкість</h3>
-                            <b>11</b>
-                        </li>
-                        <li>
-                            <h3 style="color: green;">Дальність</h3>
-                            <b>12</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tower-features-popup" id="tower-4">
-                <div class="tower-features-popup__col">
-                    <div class="tower-features-popup__cell">
-                        <div class="tower-features-popup__avatar">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tower-features-popup__col">
-                    <ul class="tower-features-popup__param-list">
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Назва башти</b>
-                                <h2 class="tower-features-popup__name">
-                                    Крута башня 4
-                                </h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Тип башти</b>
-                                <span class="tower-features-popup__type">
-										Тип 1
-									</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tower-features-popup__row">
-                    <div class="tower-features-popup__cell _center">
-                        <b>Ціна</b>
-                        <strong class="tower-features-popup__price">
-                            <span>4 грн 25 копійок</span>
-                        </strong>
-                    </div>
-                </div>
-                <div class="tower-features-popup__footer">
-                    <ul class="tower-features-popup__param-row">
-                        <li>
-                            <h3 style="color: red;">Сила</h3>
-                            <b>14</b>
-                        </li>
-                        <li>
-                            <h3 style="color: blue;">Швидкість</h3>
-                            <b>13</b>
-                        </li>
-                        <li>
-                            <h3 style="color: green;">Дальність</h3>
-                            <b>12</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tower-features-popup" id="tower-5">
-                <div class="tower-features-popup__col">
-                    <div class="tower-features-popup__cell">
-                        <div class="tower-features-popup__avatar">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tower-features-popup__col">
-                    <ul class="tower-features-popup__param-list">
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Назва башти</b>
-                                <h2 class="tower-features-popup__name">
-                                    Крута башня 5
-                                </h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Тип башти</b>
-                                <span class="tower-features-popup__type">
-										Тип 1
-									</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tower-features-popup__row">
-                    <div class="tower-features-popup__cell _center">
-                        <b>Ціна</b>
-                        <strong class="tower-features-popup__price">
-                            <span>5 грн 50 копійок</span>
-                        </strong>
-                    </div>
-                </div>
-                <div class="tower-features-popup__footer">
-                    <ul class="tower-features-popup__param-row">
-                        <li>
-                            <h3 style="color: red;">Сила</h3>
-                            <b>15</b>
-                        </li>
-                        <li>
-                            <h3 style="color: blue;">Швидкість</h3>
-                            <b>16</b>
-                        </li>
-                        <li>
-                            <h3 style="color: green;">Дальність</h3>
-                            <b>16</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tower-features-popup" id="tower-6">
-                <div class="tower-features-popup__col">
-                    <div class="tower-features-popup__cell">
-                        <div class="tower-features-popup__avatar">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="tower-features-popup__col">
-                    <ul class="tower-features-popup__param-list">
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Назва башти</b>
-                                <h2 class="tower-features-popup__name">
-                                    Крута башня 6
-                                </h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="tower-features-popup__cell">
-                                <b>Тип башти</b>
-                                <span class="tower-features-popup__type">
-										Тип 1
-									</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tower-features-popup__row">
-                    <div class="tower-features-popup__cell _center">
-                        <b>Ціна</b>
-                        <strong class="tower-features-popup__price">
-                            <span>6 грн</span>
-                        </strong>
-                    </div>
-                </div>
-                <div class="tower-features-popup__footer">
-                    <ul class="tower-features-popup__param-row">
-                        <li>
-                            <h3 style="color: red;">Сила</h3>
-                            <b>16</b>
-                        </li>
-                        <li>
-                            <h3 style="color: blue;">Швидкість</h3>
-                            <b>16</b>
-                        </li>
-                        <li>
-                            <h3 style="color: green;">Дальність</h3>
-                            <b>16</b>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<main class="main">
+    <div class="game-bg">
+        <img src="game-bg.jpg" width="0" height="0" alt="">
+    </div>
+    <div class="start-game">
+        <div class="start-game__progress">
+            <div class="start-game__progress--anim"></div>
+            <div class="start-game__progress--value"></div>
         </div>
-        <div class="game-menu-wrapper">
-            <div id="towerCollectionMenu" class="game-menu-collection">
+        <div class="start-game__wrapper">
+            <div class="start-game__bg">
+                <img src="start-bg.jpg" width="0" height="0" alt="">
+            </div>
+            <h1 class="start-game__title">
+                🌳 Захист Містичного Дерева 🌲
+            </h1>
+            <div class="start-game__nav">
                 <ul>
                     <li>
-                        <button type="button" data-tower-id="tower-1">
-                            <img src="./towerButtonIcon.png" width="32" height="32" alt="">
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" data-tower-id="tower-2">
-                            <img src="./towerButtonIcon.png" width="32" height="32" alt="">
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" data-tower-id="tower-3">
-                            <img src="./towerButtonIcon.png" width="32" height="32" alt="">
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" data-tower-id="tower-4">
-                            <img src="./towerButtonIcon.png" width="32" height="32" alt="">
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" data-tower-id="tower-5">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" data-tower-id="tower-6">
-                            <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                        <button class="start-game__button start-game__button--go">
+                            Почати гру
                         </button>
                     </li>
                 </ul>
             </div>
-            <button type="button" id="towerSelectButton" class="game-menu-target">
-                <img src="./towerButtonIcon.png" width="32" height="32" alt="">
-            </button>
         </div>
     </div>
-</div>
+    <div id="gameAreaWrapper" class="game-wrapper">
+        <div class="game-header">
+            <div class="game-header__col">
+                <button type="button" class="game-menu-close">
+                    <svg width="35" height="35" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"/></svg>
+                </button>
+            </div>
+<!--            <div class="game-header__col">-->
+<!--                <div class="game-wave">-->
+<!--                    <h2>Хвиля <strong>1</strong></h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="game-header__col">-->
+<!--                <div class="game-info">-->
+<!--                    <table>-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th>-->
+<!--                                <img src="heart.png" width="40" height="20" alt="">-->
+<!--                            </th>-->
+<!--                            <th>-->
+<!--                                <img src="money.png" width="40" height="20" alt="">-->
+<!--                            </th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td>-->
+<!--                                <b>3</b>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <b>10 грн 50 коп</b>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+        <canvas id="gameCanvas" width="1280" height="768"></canvas>
+        <div id="actionBar" class="game-menu">
+            <div class="game-menu-tower-features tower-features">
+                <div class="tower-features-popup" id="tower-1">
+                    <div class="tower-features-popup__col">
+                        <div class="tower-features-popup__cell">
+                            <div class="tower-features-popup__avatar">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__col">
+                        <ul class="tower-features-popup__param-list">
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Назва башти</b>
+                                    <h2 class="tower-features-popup__name">
+                                        Крута башня
+                                    </h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Тип башти</b>
+                                    <span class="tower-features-popup__type">
+										Тип 1
+									</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tower-features-popup__row">
+                        <div class="tower-features-popup__cell _center">
+                            <b>Ціна</b>
+                            <strong class="tower-features-popup__price">
+                                <span>2 грн 50 копійок</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__footer">
+                        <ul class="tower-features-popup__param-row">
+                            <li>
+                                <h3 style="color: red;">Сила</h3>
+                                <b>10</b>
+                            </li>
+                            <li>
+                                <h3 style="color: blue;">Швидкість</h3>
+                                <b>10</b>
+                            </li>
+                            <li>
+                                <h3 style="color: green;">Дальність</h3>
+                                <b>10</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tower-features-popup" id="tower-2">
+                    <div class="tower-features-popup__col">
+                        <div class="tower-features-popup__cell">
+                            <div class="tower-features-popup__avatar">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__col">
+                        <ul class="tower-features-popup__param-list">
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Назва башти</b>
+                                    <h2 class="tower-features-popup__name">
+                                        Крута башня 2
+                                    </h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Тип башти</b>
+                                    <span class="tower-features-popup__type">
+										Тип 1
+									</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tower-features-popup__row">
+                        <div class="tower-features-popup__cell _center">
+                            <b>Ціна</b>
+                            <strong class="tower-features-popup__price">
+                                <span>3 грн</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__footer">
+                        <ul class="tower-features-popup__param-row">
+                            <li>
+                                <h3 style="color: red;">Сила</h3>
+                                <b>12</b>
+                            </li>
+                            <li>
+                                <h3 style="color: blue;">Швидкість</h3>
+                                <b>12</b>
+                            </li>
+                            <li>
+                                <h3 style="color: green;">Дальність</h3>
+                                <b>11</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tower-features-popup" id="tower-3">
+                    <div class="tower-features-popup__col">
+                        <div class="tower-features-popup__cell">
+                            <div class="tower-features-popup__avatar">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__col">
+                        <ul class="tower-features-popup__param-list">
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Назва башти</b>
+                                    <h2 class="tower-features-popup__name">
+                                        Крута башня 3
+                                    </h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Тип башти</b>
+                                    <span class="tower-features-popup__type">
+										Тип 1
+									</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tower-features-popup__row">
+                        <div class="tower-features-popup__cell _center">
+                            <b>Ціна</b>
+                            <strong class="tower-features-popup__price">
+                                <span>3 грн 50 копійок</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__footer">
+                        <ul class="tower-features-popup__param-row">
+                            <li>
+                                <h3 style="color: red;">Сила</h3>
+                                <b>13</b>
+                            </li>
+                            <li>
+                                <h3 style="color: blue;">Швидкість</h3>
+                                <b>11</b>
+                            </li>
+                            <li>
+                                <h3 style="color: green;">Дальність</h3>
+                                <b>12</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tower-features-popup" id="tower-4">
+                    <div class="tower-features-popup__col">
+                        <div class="tower-features-popup__cell">
+                            <div class="tower-features-popup__avatar">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__col">
+                        <ul class="tower-features-popup__param-list">
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Назва башти</b>
+                                    <h2 class="tower-features-popup__name">
+                                        Крута башня 4
+                                    </h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Тип башти</b>
+                                    <span class="tower-features-popup__type">
+										Тип 1
+									</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tower-features-popup__row">
+                        <div class="tower-features-popup__cell _center">
+                            <b>Ціна</b>
+                            <strong class="tower-features-popup__price">
+                                <span>4 грн 25 копійок</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__footer">
+                        <ul class="tower-features-popup__param-row">
+                            <li>
+                                <h3 style="color: red;">Сила</h3>
+                                <b>14</b>
+                            </li>
+                            <li>
+                                <h3 style="color: blue;">Швидкість</h3>
+                                <b>13</b>
+                            </li>
+                            <li>
+                                <h3 style="color: green;">Дальність</h3>
+                                <b>12</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tower-features-popup" id="tower-5">
+                    <div class="tower-features-popup__col">
+                        <div class="tower-features-popup__cell">
+                            <div class="tower-features-popup__avatar">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__col">
+                        <ul class="tower-features-popup__param-list">
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Назва башти</b>
+                                    <h2 class="tower-features-popup__name">
+                                        Крута башня 5
+                                    </h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Тип башти</b>
+                                    <span class="tower-features-popup__type">
+										Тип 1
+									</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tower-features-popup__row">
+                        <div class="tower-features-popup__cell _center">
+                            <b>Ціна</b>
+                            <strong class="tower-features-popup__price">
+                                <span>5 грн 50 копійок</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__footer">
+                        <ul class="tower-features-popup__param-row">
+                            <li>
+                                <h3 style="color: red;">Сила</h3>
+                                <b>15</b>
+                            </li>
+                            <li>
+                                <h3 style="color: blue;">Швидкість</h3>
+                                <b>16</b>
+                            </li>
+                            <li>
+                                <h3 style="color: green;">Дальність</h3>
+                                <b>16</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tower-features-popup" id="tower-6">
+                    <div class="tower-features-popup__col">
+                        <div class="tower-features-popup__cell">
+                            <div class="tower-features-popup__avatar">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__col">
+                        <ul class="tower-features-popup__param-list">
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Назва башти</b>
+                                    <h2 class="tower-features-popup__name">
+                                        Крута башня 6
+                                    </h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tower-features-popup__cell">
+                                    <b>Тип башти</b>
+                                    <span class="tower-features-popup__type">
+										Тип 1
+									</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tower-features-popup__row">
+                        <div class="tower-features-popup__cell _center">
+                            <b>Ціна</b>
+                            <strong class="tower-features-popup__price">
+                                <span>6 грн</span>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="tower-features-popup__footer">
+                        <ul class="tower-features-popup__param-row">
+                            <li>
+                                <h3 style="color: red;">Сила</h3>
+                                <b>16</b>
+                            </li>
+                            <li>
+                                <h3 style="color: blue;">Швидкість</h3>
+                                <b>16</b>
+                            </li>
+                            <li>
+                                <h3 style="color: green;">Дальність</h3>
+                                <b>16</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="game-menu-wrapper">
+                <div id="towerCollectionMenu" class="game-menu-collection">
+                    <ul>
+                        <li>
+                            <button type="button" data-tower-id="tower-1">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" data-tower-id="tower-2">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" data-tower-id="tower-3">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" data-tower-id="tower-4">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" data-tower-id="tower-5">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" data-tower-id="tower-6">
+                                <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" id="towerSelectButton" class="game-menu-target">
+                    <img src="towerButtonIcon.png" width="32" height="32" alt="">
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 <script src="./dist/main.js"></script>
 
