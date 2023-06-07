@@ -1,5 +1,8 @@
 import { SETTINGS } from '../map/settings';
 import { towerPlacement } from '../map/towerPlacementGeneration';
+import { selectedTower, placementMode } from './towerSelectButton';
+import { buildTower } from '../towers/drawTower';
+import TOWER_SETS from '../towers/towerSets';
 
 const canvas = document.getElementById('gameCanvas');
 
@@ -29,6 +32,18 @@ window.addEventListener('mousemove', (event) => {
       cursor.y < tile.y + SETTINGS.TAIL_SIZE) {
       activeTile = tile;
       break;
+    } else {
+      activeTile = null;
     }
+  }
+});
+
+window.addEventListener('click', () => {
+  if (placementMode &&
+    activeTile !== null &&
+    activeTile.buildUp === false) {
+
+    buildTower(selectedTower, TOWER_SETS, activeTile);
+    activeTile.buildUp = true;
   }
 });

@@ -1,4 +1,5 @@
 export let placementMode = false;
+export let selectedTower = null;
 
 const
   gameMenuCollectionButtons = document.querySelectorAll('.game-menu-collection [data-tower-id]'),
@@ -28,7 +29,7 @@ gameMenuWrapper.addEventListener('mouseleave', () => {
   }
 });
 
-gameMenuCollectionButtons.forEach((gameMenuCollectionButton) => {
+gameMenuCollectionButtons.forEach((gameMenuCollectionButton, type) => {
   const towerPopup = document.querySelector(`#${gameMenuCollectionButton.dataset.towerId}`);
   if (towerPopup) {
     gameMenuCollectionButton.addEventListener('mouseenter', () => {
@@ -41,7 +42,12 @@ gameMenuCollectionButtons.forEach((gameMenuCollectionButton) => {
 
     gameMenuCollectionButton.addEventListener('click', () => {
       clearActiveFromFeaturesPopups();
-      placementMode = true;
+      setTimeout(() => placementMode = true, 0);
+      if (placementMode) {
+        placementMode = false;
+        setTimeout(() => placementMode = true, 0);
+      }
+      selectedTower = type;
       gameMenuCollection.classList.remove('_hover-active');
       gameMenuCollection.classList.remove('_active');
       if (gameMenuTowerFeatures.classList.contains('_active')) {

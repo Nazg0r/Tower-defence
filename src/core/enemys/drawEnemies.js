@@ -4,11 +4,11 @@ import ENEMIES_SETS from './enemySets';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const enemies = [];
+export const enemies = [];
 const waypoints = getWaypoints(path);
 
 spawnEnemies(10, 100);
-export function drawEnemy() {
+export function drawEnemies() {
   const enemiesNumber = enemies.length;
   for (let i = enemiesNumber - 1; i >= 0; i--) {
     enemies[i].update();
@@ -20,10 +20,10 @@ function spawnEnemies(amount, offset) {
     const enemy = new Enemy(
       -offset * i,
       0,
-      3.2,
+      2,
       ctx,
       copyArray(waypoints),
-      ENEMIES_SETS[0]
+      ENEMIES_SETS[2]
     );
     enemies.push(enemy);
   }
