@@ -10,7 +10,7 @@ import Enemy from './enemys/classEnemy';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 let stop = false;
-setTimeout(() => stop = true, 25000);
+setTimeout(() => stop = true,   25000);
 
 drawMap(passiveZone, path, towerPlacement);
 ctx.drawImage(map, 0, 0);

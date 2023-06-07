@@ -51,7 +51,7 @@ function drawPassiveZone(passiveZone) {
 
 function drawTowerPlacement(towerPlacement) {
   for (const towerField of towerPlacement) {
-    drawField(towerField, 16, 16);
+    drawField(towerField, 16, 128);
   }
 }
 
