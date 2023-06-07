@@ -2,9 +2,10 @@ import { directedPath as path } from './map/pathGeneration.js';
 import { SETTINGS } from './map/settings.js';
 import { towerPlacement } from './map/towerPlacementGeneration.js';
 import { passiveZone } from './map/passiveZoneGeneration.js';
-import { drawMap, map } from './map/mapDrawing';
-import { towerSelectButton } from './events/towerSelectButton';
+import { drawMap, map, ShowPlacementMode, highlightCells } from './map/mapDrawing';
 import { drawEnemy } from './enemys/drawEnemy';
+import { placementMode } from './events/towerSelectButton';
+import { activeTile } from './events/placementMode';
 import Enemy from './enemys/classEnemy';
 
 const canvas = document.getElementById('gameCanvas');
@@ -20,8 +21,11 @@ function render() {
 
   ctx.drawImage(map, 0, 0);
   drawEnemy();
+  if (placementMode) {
+    ShowPlacementMode();
+    highlightCells();
+  }
 
   if (stop) cancelAnimationFrame(animationId);
 }
-
 render();

@@ -1,3 +1,5 @@
+export let placementMode = false;
+
 const
   gameMenuCollectionButtons = document.querySelectorAll('.game-menu-collection [data-tower-id]'),
   towerFeaturesPopups = document.querySelectorAll('.tower-features-popup'),
@@ -39,6 +41,7 @@ gameMenuCollectionButtons.forEach((gameMenuCollectionButton) => {
 
     gameMenuCollectionButton.addEventListener('click', () => {
       clearActiveFromFeaturesPopups();
+      placementMode = true;
       gameMenuCollection.classList.remove('_hover-active');
       gameMenuCollection.classList.remove('_active');
       if (gameMenuTowerFeatures.classList.contains('_active')) {
@@ -55,6 +58,7 @@ gameMenuTarget.addEventListener('mouseenter', () => {
 
 gameMenuTarget.addEventListener('click', () => {
   gameMenuCollection.classList.toggle('_active');
+  placementMode = false;
 });
 
 document.querySelector('body').addEventListener('click', (event) => {
