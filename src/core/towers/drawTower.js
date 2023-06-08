@@ -9,35 +9,13 @@ export const towers = [];
 for (let i = 0; i < SETTINGS.ROWS; i++) {
   towers[i] = [];
 }
-export function drawTowers() {
+export function drawTowersActivity() {
   for (const row of towers) {
     for (const tower of row) {
       tower.update();
-      tower.target = null;
 
-      const possibleTargets = enemies.filter((enemy) => {
-        const xDifference = enemy.x - tower.weaponPos.x;
-        const yDifference = enemy.y - tower.weaponPos.y;
-        const distance = Math.hypot(xDifference, yDifference);
-
-        return distance < tower.towerSet.range;
-      });
-      tower.target = possibleTargets[0];
-
-
-      const projectileNum = tower.projectiles.length;
-      for (let i = projectileNum - 1; i >= 0; i--) {
-        const projectile = tower.projectiles[i];
-        projectile.update();
-
-        const xDifference = projectile.target.x - projectile.x;
-        const yDifference = projectile.target.x - projectile.x;
-
-        const distance = Math.hypot(xDifference, yDifference);
-        if (distance < projectile.target.enemySet.spriteWidth / 10) {
-          tower.projectiles.pop();
-        }
-      }
+      tower.target = getTowerTarget(tower, enemies);
+      shoot(tower, enemies);
     }
   }
 }
@@ -58,3 +36,54 @@ export function buildTower(type, towerSets, activeTile) {
   towers[row].push(tower);
 }
 
+function findDistance(x1, y1, x2, y2) {
+  const xDifference = x1 - x2;
+  const yDifference = y1 - y2;
+
+  return Math.hypot(xDifference, yDifference);
+}
+
+function getTowerTarget(tower, enemies) {
+  const possibleTargets = enemies.filter((enemy) => {
+    const distance = findDistance(
+      enemy.x,
+      enemy.y,
+      tower.weaponPos.x,
+      tower.weaponPos.y
+    );
+
+    return distance < tower.towerSet.range;
+  });
+
+  return possibleTargets[0];
+}
+
+function shoot(tower, enemies) {
+  const projectileNum = tower.projectiles.length;
+
+  for (let i = projectileNum - 1; i >= 0; i--) {
+    const projectile = tower.projectiles[i];
+    projectile.update();
+
+    const distance = findDistance(
+      projectile.target.x,
+      projectile.target.y,
+      projectile.x,
+      projectile.y
+    );
+
+    if (distance < projectile.target.enemySet.spriteWidth / 10) {
+      projectile.target.currentHealt -= tower.towerSet.damage;
+      destroyEnemy(projectile.target, enemies);
+      tower.projectiles.pop();
+    }
+  }
+}
+
+function destroyEnemy(target, enemies) {
+  if (target.currentHealt <= 0) {
+    const enemyIndex = enemies.findIndex((enemy) => enemy === target);
+
+    if (enemyIndex > -1) enemies.splice(enemyIndex, 1);
+  }
+}

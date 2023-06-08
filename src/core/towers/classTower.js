@@ -15,6 +15,7 @@ export default class Tower {
     };
     this.projectiles = [];
     this.towerSet = {
+      damage: towerSet.damage,
       attackSpeed: towerSet.attackSpeed,
       range: towerSet.range,
       spriteY: towerSet.spriteY,
