@@ -3,6 +3,7 @@ export default class Enemy {
     this.x = x;
     this.y = y;
     this.speed = speed;
+    this.currentHealt = enemySet.maxHealth;
     this.waypoints = waypoints;
     this.weypointIndex = 0;
     this.offset = 0;
@@ -11,6 +12,7 @@ export default class Enemy {
     this.image.src = enemySet.imageSrc;
     this.currentFrame = 0;
     this.enemySet = {
+      maxHealth: enemySet.maxHealth,
       imageSrc: enemySet.imageSrc,
       frameStartY: enemySet.frameStartY,
       frames: enemySet.frames,
@@ -46,8 +48,26 @@ export default class Enemy {
       this.currentFrame = 0;
     }
   }
+
+  drawHealthBar() {
+    const referenceX = this.x - this.enemySet.spriteWidth / 2;
+    const referenceY = this.y - this.enemySet.spriteHeight / 2;
+    const endBarX = referenceX + this.enemySet.spriteWidth;
+    const HPCof = this.currentHealt / this.enemySet.maxHealth;
+    const HPBarX = referenceX + this.enemySet.spriteWidth * HPCof;
+
+    this.createBeveledRectangleContour(referenceX, referenceY, endBarX);
+    this.ctx.fillStyle = 'rgb(70,91,196)';
+    this.ctx.fill();
+    this.ctx.stroke();
+
+    this.createBeveledRectangleContour(referenceX, referenceY, HPBarX);
+    this.ctx.fillStyle = 'rgba(53,211,30,0.82)';
+    this.ctx.fill();
+  }
   update() {
     this.draw();
+
     const waypoint = this.waypoints[this.weypointIndex];
     const nextWaypoint = this.waypoints[this.weypointIndex + 1];
 
@@ -86,5 +106,18 @@ export default class Enemy {
         this.weypointIndex += 1;
       }
     }
+  }
+
+  createBeveledRectangleContour(x, y, endX) {
+    this.ctx.beginPath();
+    this.ctx.moveTo(x, y + 2);
+    this.ctx.quadraticCurveTo(x, y, x + 2, y);
+    this.ctx.lineTo(endX - 2, y);
+    this.ctx.quadraticCurveTo(endX, y, endX, y + 2);
+    this.ctx.lineTo(endX, y + 6);
+    this.ctx.quadraticCurveTo(endX, y + 8, endX - 2, y + 8);
+    this.ctx.lineTo(x + 2, y + 8);
+    this.ctx.quadraticCurveTo(x, y + 8, x, y + 6);
+    this.ctx.lineTo(x, y + 2);
   }
 }

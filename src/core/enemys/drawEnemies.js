@@ -15,6 +15,15 @@ export function drawEnemies() {
   }
 }
 
+export function drawEnemiesHealthBar() {
+  const enemiesNumber = enemies.length;
+  for (let i = enemiesNumber - 1; i >= 0; i--) {
+    if (enemies[i].currentHealt < enemies[i].enemySet.maxHealth) {
+      enemies[i].drawHealthBar();
+    }
+  }
+}
+
 function spawnEnemies(amount, offset) {
   for (let i = 1; i <= amount; i++) {
     const enemy = new Enemy(
