@@ -72,7 +72,7 @@ function shoot(tower, enemies) {
       projectile.y
     );
 
-    if (distance < projectile.target.enemySet.spriteWidth / 10) {
+    if (distance < projectile.target.enemySet.spriteWidth / 4) {
       projectile.target.currentHealt -= tower.towerSet.damage;
       destroyEnemy(projectile.target, enemies);
       tower.projectiles.pop();

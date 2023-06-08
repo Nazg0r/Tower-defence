@@ -3,7 +3,7 @@ import { SETTINGS } from './map/settings.js';
 import { towerPlacement } from './map/towerPlacementGeneration.js';
 import { passiveZone } from './map/passiveZoneGeneration.js';
 import { drawMap, map, ShowPlacementMode, highlightCells } from './map/mapDrawing';
-import { drawEnemies, drawEnemiesHealthBar } from './enemys/drawEnemies';
+import { drawEnemies, drawEnemiesHealthBar, checkWave } from './enemys/drawEnemies';
 import { placementMode } from './events/towerSelectButton';
 import { drawTowersActivity, drawTowersRange } from './towers/drawTower';
 import { start } from './events/startGame';
@@ -32,6 +32,8 @@ function render() {
   drawEnemies();
   drawTowersActivity();
   drawEnemiesHealthBar();
+
+  checkWave();
 
   if (stop) cancelAnimationFrame(animationId);
 }

@@ -5,14 +5,21 @@ import ENEMIES_SETS from './enemySets';
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 export const enemies = [];
+let pause = false;
+let wave = 1;
+let startEnemiesAmount = 5;
 const waypoints = getWaypoints(path);
 
-spawnEnemies(10, 100);
 export function drawEnemies() {
   const enemiesNumber = enemies.length;
   for (let i = enemiesNumber - 1; i >= 0; i--) {
     enemies[i].update();
   }
+}
+
+export function checkWave() {
+  const wavePassed = isAllEnemiesDestroyed(enemies);
+  if (wavePassed) startNewWave();
 }
 
 export function drawEnemiesHealthBar() {
@@ -24,7 +31,7 @@ export function drawEnemiesHealthBar() {
   }
 }
 
-function spawnEnemies(amount, offset) {
+function spawnEnemies(amount, offset, wave) {
   for (let i = 1; i <= amount; i++) {
     const enemy = new Enemy(
       -offset * i,
@@ -32,7 +39,7 @@ function spawnEnemies(amount, offset) {
       2,
       ctx,
       copyArray(waypoints),
-      ENEMIES_SETS[2]
+      ENEMIES_SETS[wave - 1]
     );
     enemies.push(enemy);
   }
@@ -62,4 +69,25 @@ function getWaypoints(path) {
 
 function copyArray(arr) {
   return JSON.parse(JSON.stringify(arr));
+}
+
+function isAllEnemiesDestroyed(enemies) {
+  const aliveEnemies = enemies.length;
+  return aliveEnemies === 0;
+}
+
+function startNewWave() {
+  if (wave !== 1 && wave < 6 && pause === false) {
+    pause = true;
+    setTimeout(() => {
+      spawnEnemies(startEnemiesAmount, 100, wave);
+      pause = false;
+      startEnemiesAmount += 2;
+      wave++;
+    }, 5000);
+  } else if (wave === 1) {
+    spawnEnemies(startEnemiesAmount, 100, wave);
+    startEnemiesAmount += 2;
+    wave++;
+  }
 }
