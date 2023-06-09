@@ -42,8 +42,8 @@ window.addEventListener('click', () => {
   if (placementMode &&
     activeTile !== null &&
     activeTile.buildUp === false) {
+    const isTowerBuilt = buildTower(selectedTower, TOWER_SETS, activeTile);
 
-    buildTower(selectedTower, TOWER_SETS, activeTile);
-    activeTile.buildUp = true;
+    if (isTowerBuilt) activeTile.buildUp = true;
   }
 });

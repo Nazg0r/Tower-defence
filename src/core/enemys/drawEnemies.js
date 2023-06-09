@@ -1,19 +1,25 @@
 import Enemy from './classEnemy';
 import { directedPath as path } from '../map/pathGeneration';
 import ENEMIES_SETS from './enemySets';
+import { SETTINGS } from '../map/settings';
+import { resources, waveInfo } from '../stats/stats';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+
 export const enemies = [];
 let pause = false;
-let wave = 1;
-let startEnemiesAmount = 5;
 const waypoints = getWaypoints(path);
 
 export function drawEnemies() {
   const enemiesNumber = enemies.length;
   for (let i = enemiesNumber - 1; i >= 0; i--) {
     enemies[i].update();
+
+    if (enemies[i].x > SETTINGS.MAP_WIDTH) {
+      enemies.splice(enemies[i], 1);
+      resources.hearts--;
+    }
   }
 }
 
@@ -77,17 +83,17 @@ function isAllEnemiesDestroyed(enemies) {
 }
 
 function startNewWave() {
-  if (wave !== 1 && wave < 6 && pause === false) {
+  if (waveInfo.wave !== 1 && waveInfo.wave < 6 && pause === false) {
     pause = true;
     setTimeout(() => {
-      spawnEnemies(startEnemiesAmount, 100, wave);
+      spawnEnemies(waveInfo.startEnemiesAmount, 100, waveInfo.wave);
       pause = false;
-      startEnemiesAmount += 2;
-      wave++;
+      waveInfo.startEnemiesAmount += 2;
+      waveInfo.wave++;
     }, 5000);
-  } else if (wave === 1) {
-    spawnEnemies(startEnemiesAmount, 100, wave);
-    startEnemiesAmount += 2;
-    wave++;
+  } else if (waveInfo.wave === 1) {
+    spawnEnemies(waveInfo.startEnemiesAmount, 100, waveInfo.wave);
+    waveInfo.startEnemiesAmount += 2;
+    waveInfo.wave++;
   }
 }

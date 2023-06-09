@@ -6,6 +6,8 @@ import { drawMap, map, ShowPlacementMode, highlightCells } from './map/mapDrawin
 import { drawEnemies, drawEnemiesHealthBar, checkWave } from './enemys/drawEnemies';
 import { placementMode } from './events/towerSelectButton';
 import { drawTowersActivity, drawTowersRange } from './towers/drawTower';
+import { resources } from './stats/stats';
+import { showStats } from './events/showStats';
 import { start } from './events/startGame';
 import { activeTile } from './events/placementMode';
 import Enemy from './enemys/classEnemy';
@@ -13,8 +15,8 @@ import Enemy from './enemys/classEnemy';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-let stop = false;
-setTimeout(() => stop = true,   1000000);
+// let stop = false;
+// setTimeout(() => stop = true,   1000000);
 
 drawMap(passiveZone, path, towerPlacement);
 ctx.drawImage(map, 0, 0);
@@ -32,9 +34,11 @@ function render() {
   drawEnemies();
   drawTowersActivity();
   drawEnemiesHealthBar();
+  showStats();
 
   checkWave();
 
-  if (stop) cancelAnimationFrame(animationId);
+  if (resources.hearts === 0) cancelAnimationFrame(animationId);
 }
+
 render();

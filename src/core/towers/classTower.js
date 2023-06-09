@@ -19,6 +19,7 @@ export default class Tower {
       attackSpeed: towerSet.attackSpeed,
       range: towerSet.range,
       spriteY: towerSet.spriteY,
+      const: towerSet.cost,
       spriteWidth: towerSet.spriteWidth,
       spriteHeight: towerSet.spriteHeight
     };

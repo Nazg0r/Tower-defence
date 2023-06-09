@@ -40,37 +40,37 @@
                     <svg width="35" height="35" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"/></svg>
                 </button>
             </div>
-<!--            <div class="game-header__col">-->
-<!--                <div class="game-wave">-->
-<!--                    <h2>Хвиля <strong>1</strong></h2>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="game-header__col">-->
-<!--                <div class="game-info">-->
-<!--                    <table>-->
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th>-->
-<!--                                <img src="heart.png" width="40" height="20" alt="">-->
-<!--                            </th>-->
-<!--                            <th>-->
-<!--                                <img src="money.png" width="40" height="20" alt="">-->
-<!--                            </th>-->
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                            <td>-->
-<!--                                <b>3</b>-->
-<!--                            </td>-->
-<!--                            <td>-->
-<!--                                <b>10 грн 50 коп</b>-->
-<!--                            </td>-->
-<!--                        </tr>-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="game-header__col">
+                <div class="game-wave">
+                    <h2>Хвиля <strong id="wave">1</strong></h2>
+                </div>
+            </div>
+            <div class="game-header__col">
+                <div class="game-info">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>
+                                <img src="heart.png" width="40" height="20" alt="">
+                            </th>
+                            <th>
+                                <img src="money.png" width="40" height="20" alt="">
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <b id="heart">3</b>
+                            </td>
+                            <td>
+                                <b id="money"><span>10</span> грн <span>10</span> коп</b>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <canvas id="gameCanvas" width="1280" height="768"></canvas>
         <div id="actionBar" class="game-menu">
