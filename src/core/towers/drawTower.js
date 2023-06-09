@@ -30,12 +30,13 @@ export function drawTowersRange() {
   }
 }
 
-export function buildTower(type, towerSets, activeTile) {
+export function buildTower(type, towerSets, activeTile, weaponSets) {
   const towerSet = towerSets[type];
+  const weaponSet = weaponSets[type];
 
   if (towerSet.cost < resources.hryvnias) {
     const row = activeTile.y / SETTINGS.TAIL_SIZE;
-    const tower = new Tower(activeTile.x, activeTile.y, ctx, towerSet);
+    const tower = new Tower(activeTile.x, activeTile.y, ctx, towerSet, weaponSet);
 
     resources.hryvnias -= towerSet.cost;
 
