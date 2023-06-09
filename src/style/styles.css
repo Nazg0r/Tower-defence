@@ -208,7 +208,7 @@ body {
     left: 0; top: 0;
     width: 40px; height: 56px;
     transform: translate(-50%,-50%) scaleX(-1);
-    background: url(Guide_Default.png) 0 var(--pos) / 100% auto repeat;
+    /*background: url(Guide_Default.png) 0 var(--pos) / 100% auto repeat;*/
     z-index: 3;
 }
 
@@ -670,7 +670,7 @@ body {
 .game-header {
     align-self: self-start;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 .game-menu-close {

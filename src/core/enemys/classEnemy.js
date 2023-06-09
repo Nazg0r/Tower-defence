@@ -13,6 +13,7 @@ export default class Enemy {
     this.currentFrame = 0;
     this.enemySet = {
       maxHealth: enemySet.maxHealth,
+      award: enemySet.award,
       imageSrc: enemySet.imageSrc,
       frameStartY: enemySet.frameStartY,
       frames: enemySet.frames,

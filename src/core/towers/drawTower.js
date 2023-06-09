@@ -1,9 +1,11 @@
 import Tower from './classTower';
 import { SETTINGS } from '../map/settings';
 import { enemies } from '../enemys/drawEnemies';
+import { resources } from '../stats/stats';
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
+
 export const towers = [];
 
 for (let i = 0; i < SETTINGS.ROWS; i++) {
@@ -28,12 +30,22 @@ export function drawTowersRange() {
   }
 }
 
-export function buildTower(type, towerSets, activeTile) {
-  const row = activeTile.y / SETTINGS.TAIL_SIZE;
+export function buildTower(type, towerSets, activeTile, weaponSets) {
   const towerSet = towerSets[type];
-  const tower = new Tower(activeTile.x, activeTile.y, ctx, towerSet);
+  const weaponSet = weaponSets[type];
 
-  towers[row].push(tower);
+  if (towerSet.cost < resources.hryvnias) {
+    const row = activeTile.y / SETTINGS.TAIL_SIZE;
+    const tower = new Tower(activeTile.x, activeTile.y, ctx, towerSet, weaponSet);
+
+    resources.hryvnias -= towerSet.cost;
+
+    towers[row].push(tower);
+
+    return true;
+  }
+
+  return false;
 }
 
 function findDistance(x1, y1, x2, y2) {
@@ -84,6 +96,9 @@ function destroyEnemy(target, enemies) {
   if (target.currentHealt <= 0) {
     const enemyIndex = enemies.findIndex((enemy) => enemy === target);
 
-    if (enemyIndex > -1) enemies.splice(enemyIndex, 1);
+    if (enemyIndex > -1) {
+      enemies.splice(enemyIndex, 1);
+      resources.hryvnias += target.enemySet.award;
+    }
   }
 }

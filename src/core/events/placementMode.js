@@ -3,6 +3,7 @@ import { towerPlacement } from '../map/towerPlacementGeneration';
 import { selectedTower, placementMode } from './towerSelectButton';
 import { buildTower } from '../towers/drawTower';
 import TOWER_SETS from '../towers/towerSets';
+import WEAPON_SETS from '../towers/weaponSets';
 
 const canvas = document.getElementById('gameCanvas');
 
@@ -42,8 +43,8 @@ window.addEventListener('click', () => {
   if (placementMode &&
     activeTile !== null &&
     activeTile.buildUp === false) {
+    const isTowerBuilt = buildTower(selectedTower, TOWER_SETS, activeTile, WEAPON_SETS);
 
-    buildTower(selectedTower, TOWER_SETS, activeTile);
-    activeTile.buildUp = true;
+    if (isTowerBuilt) activeTile.buildUp = true;
   }
 });
